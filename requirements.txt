@@ -1,0 +1,5 @@
+Flask==2.3.2
+SQLAlchemy==1.4.41
+pyodbc==4.0.34
+flask_sqlalchemy==3.0.5
+azure-mgmt-sql==3.0.1

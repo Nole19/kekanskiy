@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center mb-4">{{ habit.name }} Progress</h2>
+<div class="mb-4">
+    <p>Description: {{ habit.description or "No description provided." }}</p>
+    <p>Start Date: {{ habit.start_date.strftime('%Y-%m-%d') }}</p>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Completed</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in progress %}
+            <tr>
+                <td>{{ record.date.strftime('%Y-%m-%d') }}</td>
+                <td>{{ "Yes" if record.completed else "No" }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2" class="text-center">No progress records found.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Dashboard</a>
+{% endblock %}
